@@ -1,0 +1,8 @@
+function majorHurricanes = getMajorHurricanes(allHurricaneData)
+% determines only high-intensity major storms
+% INPUT:  allHurricaneData - Structure Array for all hurricanes with six fields:
+%         name, date, lat, lon, wind, pressure
+% RETURN: majorHurricanes
+%         - A subset of the Structure Array containing
+%           only storms that reached Category 3 or higher
+%         - if no major hurricanes are found, return an empty struct()
