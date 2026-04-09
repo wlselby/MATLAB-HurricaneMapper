@@ -1,0 +1,26 @@
+%  Name(s): William Selby & Ben Roylance
+%  Email(s): wlselby@ncsu.edu   bmroylan@ncsu.edu
+%  Date: 4-8-26
+%  Lab Section 209
+%  Project 3: Hurricane Mapper, Spring 2026
+clc ; clear ; close('all');
+
+% get initial user input
+fprintf('------------------------------\n')
+fprintf('%29s\n', 'Animate Specific Hurricane[1]')
+fprintf('%29s\n','Animate All Hurricanes[2]')
+fprintf('%29s\n','Animate Major Hurricanes[3]')
+fprintf('%29s\n','Create Hurricane Report[4]')
+choice = input('%29s\n','Select Action: ', 's');
+fprintf('------------------------------\n')
+
+% use this function once per user action to create a figure for animation
+createFigureWithBackground();
+
+
+
+
+
+
+
+
