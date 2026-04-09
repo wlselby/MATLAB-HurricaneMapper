@@ -3,17 +3,17 @@ A Repository that hosts a MATLAB based hurricane tracker to display hurricanes, 
 
 ## Part Segmentation
 ### William Selby
-- Phase 1
+#### *Phase 1*
 * getAllHurricaneData.m
 * animatePlotHurricane.m
-- Phase 2 -
+#### *Phase 2*
 * generateReport.m
 * Custom Function (name TBD)
 
 ### Ben Roylance
-- Phase 1 -
+#### *Phase 1*
 * getMajorHurricanes.m
 * calcCategory.m
-- Phase 2 -
+#### *Phase 2*
 * calcDistTraveled.m
 * findClosestToWilmington.m
