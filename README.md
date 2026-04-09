@@ -5,14 +5,14 @@ A Repository that hosts a MATLAB based hurricane tracker to display hurricanes, 
 ### William Selby
 #### *Phase 1*
 * getAllHurricaneData.m
-* animatePlotHurricane.m
+* getMajorHurricanes.m
 #### *Phase 2*
 * generateReport.m
 * Custom Function (name TBD)
 
 ### Ben Roylance
 #### *Phase 1*
-* getMajorHurricanes.m
+* animatePlotHurricane.m
 * calcCategory.m
 #### *Phase 2*
 * calcDistTraveled.m
