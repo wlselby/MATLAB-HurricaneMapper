@@ -13,3 +13,30 @@ function [category, color] = calcCategory(wind)
 % category 3: 111-129, color [1 0 0], red
 % category 4: 130-156, color [0.75 0 1], violet
 % category 5: >= 157, color [1 0 1], pink
+
+%create an if ladder to figure out what category based on comparison of
+%input wind speed to different category level winds
+%also, asign a color to the category with its numeric code, depending on
+%category.
+if wind <= 38
+    category = 0;
+    color = [0 1 1];
+elseif 73>=wind
+    category = 0;
+    color = [0.25 1 0];
+elseif 95>=wind
+    category = 1;
+    color = [1 1 0];
+elseif 110>=wind
+    category = 2;
+    color = [1 0.75 0];
+elseif 129>=wind
+    category = 3;
+    color = [1 0 0];
+elseif 156>=wind
+    category = 4;
+    color = [0.75 0 1];
+elseif wind >= 157
+    category = 5;
+    color = [1 0 1];
+end
