@@ -18,25 +18,35 @@ function [category, color] = calcCategory(wind)
 %input wind speed to different category level winds
 %also, asign a color to the category with its numeric code, depending on
 %category.
+
 if wind <= 38
     category = 0;
     color = [0 1 1];
-elseif 73>=wind
+
+elseif wind <= 73
     category = 0;
     color = [0.25 1 0];
-elseif 95>=wind
+
+elseif wind <= 95
     category = 1;
     color = [1 1 0];
-elseif 110>=wind
+
+elseif wind <= 110
     category = 2;
     color = [1 0.75 0];
-elseif 129>=wind
+
+elseif wind <= 129
     category = 3;
     color = [1 0 0];
-elseif 156>=wind
+
+elseif wind <= 156
     category = 4;
     color = [0.75 0 1];
-elseif wind >= 157
+
+else
     category = 5;
     color = [1 0 1];
+
+end
+
 end
