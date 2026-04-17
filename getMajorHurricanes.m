@@ -7,6 +7,14 @@ function majorHurricanes = getMajorHurricanes(allHurricaneData)
 %           only storms that reached Category 3 or higher
 %         - if no major hurricanes are found, return an empty struct()
 
+majorHurricanes = allHurricaneData([]);  % keeps same fields, empty data
 
+for i = 1:length(allHurricaneData)
+
+    [category, ~] = calcCategory(allHurricaneData(i).wind);
+
+    if category >= 3
+        majorHurricanes = [majorHurricanes allHurricaneData(i)];
+    end
 
 end

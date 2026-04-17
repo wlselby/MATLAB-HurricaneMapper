@@ -3,6 +3,7 @@
 %  Date: 4-8-26
 %  Lab Section 209
 %  Project 3: Hurricane Mapper, Spring 2026
+
 clc ; clear ; close('all');
 
 % get initial user input and initial statements
@@ -20,7 +21,6 @@ if ~ismember(animationInput, [1,2,3,4])
     disp('Exiting Program. Incorrect action selected.')
     return
 
-
 end
 
 % print next transitional statement
@@ -30,55 +30,29 @@ fprintf('------------------------------\n')
 yearInput = input('                What Year: ');
 
 % check if yearInput isn't a selectable option to display the error
-if ~ismember(yearInput, [2017,2025])
+if yearInput ~= 2017 && yearInput ~= 2025
 
     disp('No data available for that year')
     return
 
 elseif yearInput == 2017
 
-    % after passing the error check we can assign the directory to index
+    % assign directory for 2017 data
     dirName = 'data_2017';
-
 
 elseif yearInput == 2025
 
-    % after passing the error check we can assign the directory to index
+    % assign directory for 2025 data
     dirName = 'data_2025';
-
 
 end
 
 % print analyzing message before opening the input GUI
 fprintf('Analyzing hurricanes for %d . . .\n', yearInput)
 
-theHurricanes = readcell([dirName '/allHurricanes.txt']);
-num_hurricanes = length(theHurricanes);
+allHurricaneData = getAllHurricaneData(dirName);
 
-for i = 1:num_hurricanes
-
-    dirData = readcell([dirName '/' theHurricanes{i} '.csv']);
-
-    allHurricaneData(i).name = [dirData{i}];
-    allHurricaneData(i).dates = dirData
-    
-
-end
-
-%allHurricaneData = getAllHurricaneData(dirName)
-
-
-
-
-
- 
 % use this function once per user action to create a figure for animation
 createFigureWithBackground();
 
-
-
-
-
-
-
-
+majorHurricanes = getMajorHurricanes(allHurricaneData);

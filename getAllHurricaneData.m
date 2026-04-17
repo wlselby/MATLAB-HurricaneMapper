@@ -16,17 +16,23 @@ function allHurricaneData = getAllHurricaneData(dirName)
 %        allHurricanes.txt, since it is the same for both years
 
 theHurricanes = readcell([dirName '/allHurricanes.txt']);
-num_hurricanes = length(theHurricanes);
+num_hurricanes = numel(theHurricanes);
 
 for i = 1:num_hurricanes
 
-    hurricaneDir = [theHurricanes{i} '.csv'];
+    dirData = readcell([dirName, '/', theHurricanes{i}, '.csv']);
 
-    allHurricaneData(i).name = theHurricanes{i};
-    
+    % store each column as a column cell array (or convert to table)
+
+    allHurricaneData(i).name     = dirData{2,2};
+    allHurricaneData(i).date     = dirData(2:end,3);
+    allHurricaneData(i).lat      = cell2mat(dirData(2:end,5));
+    allHurricaneData(i).lon      = cell2mat(dirData(2:end,6));
+    allHurricaneData(i).wind     = cell2mat(dirData(2:end,7));
+    allHurricaneData(i).pressure = cell2mat(dirData(2:end,8));
+
 
 end
-
 
 
 end
