@@ -37,12 +37,35 @@ if ~ismember(yearInput, [2017,2025])
 
 elseif yearInput == 2017
 
-    
+    % after passing the error check we can assign the directory to index
+    dirName = 'data_2017';
+
+
+elseif yearInput == 2025
+
+    % after passing the error check we can assign the directory to index
+    dirName = 'data_2025';
+
 
 end
 
 % print analyzing message before opening the input GUI
 fprintf('Analyzing hurricanes for %d . . .\n', yearInput)
+
+theHurricanes = readcell([dirName '/allHurricanes.txt']);
+num_hurricanes = length(theHurricanes);
+
+for i = 1:num_hurricanes
+
+    dirData = readcell([dirName '/' theHurricanes{i} '.csv']);
+
+    allHurricaneData(i).name = [dirData{i}];
+    allHurricaneData(i).dates = dirData
+    
+
+end
+
+%allHurricaneData = getAllHurricaneData(dirName)
 
 
 

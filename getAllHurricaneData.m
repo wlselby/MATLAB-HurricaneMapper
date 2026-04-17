@@ -17,3 +17,16 @@ function allHurricaneData = getAllHurricaneData(dirName)
 
 theHurricanes = readcell([dirName '/allHurricanes.txt']);
 num_hurricanes = length(theHurricanes);
+
+for i = 1:num_hurricanes
+
+    hurricaneDir = [theHurricanes{i} '.csv'];
+
+    allHurricaneData(i).name = theHurricanes{i};
+    
+
+end
+
+
+
+end

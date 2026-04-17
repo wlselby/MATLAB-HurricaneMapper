@@ -6,3 +6,7 @@ function majorHurricanes = getMajorHurricanes(allHurricaneData)
 %         - A subset of the Structure Array containing
 %           only storms that reached Category 3 or higher
 %         - if no major hurricanes are found, return an empty struct()
+
+
+
+end
