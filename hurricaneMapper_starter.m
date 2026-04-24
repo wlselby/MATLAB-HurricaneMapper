@@ -50,9 +50,92 @@ end
 % print analyzing message before opening the input GUI
 fprintf('Analyzing hurricanes for %d . . .\n', yearInput)
 
+% get the data for list options.
 allHurricaneData = getAllHurricaneData(dirName);
 
-% use this function once per user action to create a figure for animation
-createFigureWithBackground();
 
-majorHurricanes = getMajorHurricanes(allHurricaneData);
+% chosen animate a hurricane
+if animationInput == 1
+
+    % make the list of choices for user selection
+    [index, choice] = listdlg("ListString", {allHurricaneData.name}, "SelectionMode","single");
+
+    % user picked cancel
+    if choice == 0
+
+        % display error message
+        disp("Error, Selection Canceled")
+
+    else
+
+        % use this function once per user action to create a figure for animation
+        createFigureWithBackground();
+
+        % slow down to update the graph
+        drawnow; pause(.1);
+
+        % animate the selected hurricane
+        animatePlotHurricane(allHurricaneData(index))
+
+
+    end
+
+% animate all hurricanes
+elseif animationInput == 2
+
+    % visualizing all hurricanes
+    fprintf('Visualizing all hurricanes . . .\n')
+
+    % use this function once per user action to create a figure for animation
+    createFigureWithBackground();
+
+    % slow down to update the graph
+    drawnow; pause(.1);
+    
+    % loop through all the data
+    for i = 1:numel(allHurricaneData)
+
+        % animate the selected hurricane
+        animatePlotHurricane(allHurricaneData(i))
+
+
+    end
+
+% animate major hurricanes
+elseif animationInput == 3
+
+    % visualizing major hurricanes
+    fprintf('Visualizing major hurricanes . . .\n')
+
+    % get major hurricanes for proper data
+    majorHurricanes = getMajorHurricanes(allHurricaneData);
+
+    % use this function once per user action to create a figure for animation
+    createFigureWithBackground();
+
+    % slow down to update the graph
+    drawnow; pause(.1);
+    
+    % loop through all the data
+    for i = 1:numel(majorHurricanes)
+
+        % animate the selected hurricane
+        animatePlotHurricane(majorHurricanes(i))
+
+    end
+% Generate Report
+elseif animationInput == 4
+   
+% use generate report to generate the report, pretty self-explanetary
+    generateReport(allHurricaneData, yearInput)
+
+    
+
+end
+
+
+
+
+
+
+
