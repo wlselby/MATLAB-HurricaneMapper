@@ -16,6 +16,16 @@ function animatePlotHurricane(hurricaneData)
 
 %figure out the length of the data array for use in the for loop
 numPoints=length(hurricaneData.lat);
+    
+longitudeData = hurricaneData(1).lon;
+latitudeData = hurricaneData(1).lat;
+
+%print the name of the hurricane
+text(longitudeData(1), latitudeData(1), hurricaneData.name, ...
+    'Color', 'w', 'FontSize', 12, 'FontWeight', 'bold', ...
+    'HorizontalAlignment','left', 'VerticalAlignment', 'bottom');
+
+hold on;
 
 %initiate the for loop to iterate through from 1 to the end of the length
 %of the array.
