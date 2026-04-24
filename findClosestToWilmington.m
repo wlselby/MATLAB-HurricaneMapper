@@ -1,4 +1,4 @@
-function minDist = findClosestToWilmington(lat, lon)
+function [minDist, closestStormName] = findClosestToWilmington(allHurricaneData)
 % findClosestToWilmington: finds the minimum distance between a hurricane
 % and wilmington.
 % INPUTS:
@@ -22,8 +22,10 @@ minDist= 999999999999999999999999999999999999999;
         %use the euclidean distance formula, but with the coordinates for
         %wilmington as the initial points, and whatever coords are at i as the
         %final points.
-        x2=lon(i);
-        y2=lat(i);
+        %use the data from allHurricaneData to index into the  lat and lon
+        %for the specific hurricane
+        x2=allHurricaneData(i).lon;
+        y2=allHurricaneData(i).lat;
         x1=wilmLon;
         y1=wilmLat;
         %plug values into formula
@@ -33,6 +35,9 @@ minDist= 999999999999999999999999999999999999999;
         %distance
         if distance < minDist
             minDist=distance; %if it is less, make that value the new minDist
+            closestStormName=allHurricaneData(i).name;
         end
+
+        
     end
 end
