@@ -1,0 +1,28 @@
+function totalDist=calcDistTraveled(lat, lon)
+% calcDistTraveled calculates the distance traveled by a certain hurricane
+% INPUTS:
+%   lat - a vector of latitude coordinates for the hurricane
+%   lon - a vector of longitude coordinates for the hurricane
+% OUTPUT:
+%   totalDist - the total distance traveled by the hurricane
+
+%initialize the variable for totalDist as 0
+totalDist=0;
+
+%start a for loop to go through the coordinates in the vectors one at a
+%time
+    for i=1:(length(lat)-1)
+        x1=lon(i); %find the initial values for coords at x and y
+        y1=lat(i);
+        x2=lon(i+1); %add one to the index to find the next points coords
+        y2=lat(i+1);
+    
+        %use these points in the euclidean distance equation to give the
+        %distance traveled by the hurricane.
+        newDist=sqrt((x2-x1)^2+(y2-y1)^2);
+    
+        %now add this new distance to the total distance traveled
+        totalDist = totalDist + newDist;
+    end
+
+end
