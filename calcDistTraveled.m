@@ -18,8 +18,10 @@ totalDist=0;
         y2=allHurricaneData(i+1).lat;
     
         %use these points in the euclidean distance equation to give the
-        %distance traveled by the hurricane.
+        %distance traveled by the hurricane. We picked this one because it
+        %was more simple to implement.
         newDist=sqrt((x2-x1)^2+(y2-y1)^2);
+        newDistMiles=newDist*69; %convert to miles
     
         %now add this new distance to the total distance traveled
         totalDist = totalDist + newDist;

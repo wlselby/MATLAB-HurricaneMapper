@@ -21,7 +21,8 @@ minDist= 999999999999999999999999999999999999999;
     for i = 1:length(lat)
         %use the euclidean distance formula, but with the coordinates for
         %wilmington as the initial points, and whatever coords are at i as the
-        %final points.
+        %final points. We used this formula because it would be more simple
+        %to implement in the code.
         %use the data from allHurricaneData to index into the  lat and lon
         %for the specific hurricane
         x2=allHurricaneData(i).lon;
@@ -30,11 +31,12 @@ minDist= 999999999999999999999999999999999999999;
         y1=wilmLat;
         %plug values into formula
         distance=sqrt((x2-x1)^2+(y2-y1)^2);
+        distInMiles=distance*69; %convert from distance in coordinates to distance in miles
     
         %check if the just found distance is smaller than the current min
         %distance
-        if distance < minDist
-            minDist=distance; %if it is less, make that value the new minDist
+        if distInMiles < minDist
+            minDist=distInMiles; %if it is less, make that value the new minDist
             closestStormName=allHurricaneData(i).name;
         end
 
