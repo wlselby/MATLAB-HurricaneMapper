@@ -21,7 +21,7 @@ function generateReport(allHurricaneData, year)
 totalDist = calcDistTraveled(allHurricaneData);
 
 % get the closest storm and the closest distance it came
-[minDist, closestStormName] = findClosestToWilmington(allHurricaneData);
+[closestStormName, minDist] = findClosestToWilmington(allHurricaneData);
 
 % open the new file
 fid = fopen('hurricaneReport.txt', 'w');

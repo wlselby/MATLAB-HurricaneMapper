@@ -127,9 +127,7 @@ elseif animationInput == 3
 elseif animationInput == 4
    
 % use generate report to generate the report, pretty self-explanetary
-    generateReport(allHurricaneData, yearInput)
-
-    
+    generateReport(allHurricaneData, yearInput)  
 
 end
 
