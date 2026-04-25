@@ -7,16 +7,18 @@
 clc ; clear ; close('all');
 
 % get initial user input and initial statements
-fprintf('------------------------------\n')
-fprintf('%29s\n', 'Animate Specific Hurricane[1]')
-fprintf('%29s\n','Animate All Hurricanes[2]')
-fprintf('%29s\n','Animate Major Hurricanes[3]')
-fprintf('%29s\n','Create Hurricane Report[4]')
+fprintf('-----------------------------------\n')
+fprintf('%34s\n', 'Animate Specific Hurricane[1]')
+fprintf('%34s\n','Animate All Hurricanes[2]')
+fprintf('%34s\n','Animate Major Hurricanes[3]')
+fprintf('%34s\n','Create Hurricane Report[4]')
+fprintf('%34s\n','Plot Data of Specific Hurricane[5]')
 
-animationInput = input('            Select Action: ');
+
+animationInput = input('                 Select Action: ');
 
 % check if animationInput isn't a selectable option to display the error
-if ~ismember(animationInput, [1,2,3,4])
+if ~ismember(animationInput, [1,2,3,4,5])
 
     disp('Exiting Program. Incorrect action selected.')
     return
@@ -24,10 +26,10 @@ if ~ismember(animationInput, [1,2,3,4])
 end
 
 % print next transitional statement
-fprintf('------------------------------\n')
+fprintf('-----------------------------------\n')
 
 % get input for the next year
-yearInput = input('                What Year: ');
+yearInput = input('                     What Year: ');
 
 % check if yearInput isn't a selectable option to display the error
 if yearInput ~= 2017 && yearInput ~= 2025
@@ -127,13 +129,41 @@ elseif animationInput == 3
 elseif animationInput == 4
    
 % use generate report to generate the report, pretty self-explanetary
-    generateReport(allHurricaneData, yearInput)  
+    generateReport(allHurricaneData, yearInput)
+
+% use custom function to plot the data of the hurricane
+elseif animationInput == 5
+
+    [index, choice] = listdlg("ListString", {allHurricaneData.name}, "SelectionMode","single");
+    
+
+    if choice == 0
+
+        disp("Error, Selection Canceled")
+
+
+    else
+
+        plotInput = input('Would you like to plot the wind [w], pressure [p], or both [Enter]: ', 's');
+        
+        % Extract the specific hurricane selected
+        hurricaneData = allHurricaneData(index);
+        
+        % CRITICAL FIX: If user just pressed enter, pass NOTHING to varargin
+        if isempty(plotInput)
+
+            hurricanePlot = plotHurricaneData(hurricaneData, yearInput);
+
+
+        else
+
+            hurricanePlot = plotHurricaneData(hurricaneData, yearInput, plotInput);
+
+
+        end
+
+
+    end
+
 
 end
-
-
-
-
-
-
-

@@ -50,5 +50,3 @@ fprintf(fid, '******************************************************************
 
 % close the new file when done
 fclose(fid);
-
-
