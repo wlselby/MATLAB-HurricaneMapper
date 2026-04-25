@@ -1,4 +1,4 @@
-function [minDist, closestStormName] = findClosestToWilmington(allHurricaneData)
+function [closestStormName, minDist] = findClosestToWilmington(allHurricaneData)
 % findClosestToWilmington: finds the minimum distance between a hurricane
 % and wilmington.
 % INPUTS:
@@ -15,41 +15,28 @@ wilmLon= -77.94;
 %graph will be closer to wilmington than the initial value, and it will
 %update.
 
-minDist= 999999999999999999999999999999999999999;
+minDist= inf;
 
-%create a loop to go through all of the points in the hurricane
-[~, c] = size({allHurricaneData.name});
-
-for j = 1:c
-
-    lat = allHurricaneData(j).lat;
-    lon = allHurricaneData(j).lon;
-
-    for i=1:(numel(lat))
-        %use the euclidean distance formula, but with the coordinates for
-        %wilmington as the initial points, and whatever coords are at i as the
-        %final points.
-        %use the data from allHurricaneData to index into the  lat and lon
-        %for the specific hurricane
-        x2=lat(i);
-        y2=lon(i);
-        x1=wilmLon;
-        y1=wilmLat;
-        %plug values into formula
-        distance=sqrt((x2-x1)^2+(y2-y1)^2);
-    
-        %check if the just found distance is smaller than the current min
-        %distance
-        if distance < minDist
-            minDist=distance; %if it is less, make that value the new minDist
-            closestStormName=allHurricaneData(j).name;
-        end
-
+%loop through the length of the data to find the lat and lon of each line
+    for i =1:(length(allHurricaneData)) 
         
+        lat=allHurricaneData(i).lat; %get the lat and lon from the hurricane data pack
+        lon=allHurricaneData(i).lon;
+    
+        %if the minimum calculated distance is less than the current distance
+        %in miles, it will replace the old distance with the new smaller one
+        if min(69*(sqrt(((wilmLat-lat).^2)+(wilmLon-lon).^2))) < minDist
+    
+            %find distance with euclidean geometry formula. Should be 
+            %the same as the equation used for the if statement
+            minDist=min(69*(sqrt(((wilmLat-lat).^2)+(wilmLon-lon).^2)));
+    
+            %find the name to match the new lowest value using indexing
+            closestStormName=allHurricaneData(i).name;
+        end
+        
+    
+    
     end
-
-
-end
-
 
 end
